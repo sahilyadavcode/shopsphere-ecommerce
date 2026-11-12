@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ecommerce
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecommerce
+    username: postgres
+    password: Sql12350postgre
+
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+
+  jackson:
+    default-property-inclusion: non_null
+
+app:
+  jwt:
+    # Change this secret in production! Must be at least 256 bits for HS256.
+    secret: "ThisIsAVeryLongSecretKeyForJWTSigningPurposesChangeInProd123456"
+    expiration-ms: 86400000        # 24 hours
+    refresh-expiration-ms: 604800000 # 7 days
+
+  cors:
+    allowed-origins: "http://localhost:3000"
+
+logging:
+  level:
+    com.example.ecommerce: DEBUG
+    org.springframework.security: INFO
